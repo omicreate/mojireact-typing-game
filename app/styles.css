@@ -497,6 +497,66 @@ h1 {
   animation: stagePulse 520ms ease-in-out infinite;
 }
 
+.mood-money .play::after {
+  opacity: 0.62;
+  background:
+    radial-gradient(circle at 18% 34%, rgba(158, 255, 179, 0.28) 0 4px, transparent 5px),
+    radial-gradient(circle at 72% 28%, rgba(255, 241, 166, 0.3) 0 5px, transparent 6px),
+    radial-gradient(circle at 58% 70%, rgba(158, 255, 179, 0.22) 0 4px, transparent 5px),
+    repeating-linear-gradient(120deg, transparent 0 42px, rgba(158, 255, 179, 0.12) 42px 45px);
+  animation: stageCoins 1.1s linear infinite;
+}
+
+.mood-clean .play::after {
+  opacity: 0.58;
+  background:
+    linear-gradient(105deg, transparent 0 44%, rgba(223, 252, 255, 0.26) 48%, transparent 54%),
+    repeating-linear-gradient(0deg, rgba(223, 252, 255, 0.06) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(223, 252, 255, 0.06) 0 1px, transparent 1px 28px);
+  animation: stageSweep 1.15s ease-in-out infinite;
+}
+
+.mood-hard .play::after {
+  opacity: 0.62;
+  background:
+    linear-gradient(180deg, rgba(215, 221, 230, 0.2), transparent 48%),
+    repeating-linear-gradient(90deg, transparent 0 34px, rgba(215, 221, 230, 0.18) 34px 39px);
+  animation: stageImpact 520ms ease-in-out infinite;
+}
+
+.mood-hungry .play::after {
+  opacity: 0.6;
+  background:
+    radial-gradient(ellipse at 50% 58%, rgba(255, 209, 155, 0.26), transparent 34%),
+    repeating-radial-gradient(circle at 50% 58%, rgba(255, 209, 155, 0.12) 0 2px, transparent 2px 22px);
+  animation: stageHunger 1.05s ease-in-out infinite;
+}
+
+.mood-focus .play::after {
+  opacity: 0.68;
+  background:
+    linear-gradient(90deg, transparent 0 48%, rgba(88, 220, 255, 0.22) 49%, transparent 51%),
+    linear-gradient(0deg, transparent 0 48%, rgba(88, 220, 255, 0.22) 49%, transparent 51%),
+    radial-gradient(circle at 50% 50%, transparent 0 18%, rgba(88, 220, 255, 0.18) 19%, transparent 24%);
+  animation: stageFocus 900ms ease-in-out infinite;
+}
+
+.mood-secret .play::after {
+  opacity: 0.58;
+  background:
+    radial-gradient(ellipse at 50% 48%, transparent 0 24%, rgba(0, 0, 0, 0.42) 54%),
+    linear-gradient(90deg, rgba(189, 167, 255, 0.08), transparent 36%, rgba(189, 167, 255, 0.08));
+  animation: stageSecret 1.25s ease-in-out infinite;
+}
+
+.mood-faint .play::after {
+  opacity: 0.5;
+  background:
+    radial-gradient(ellipse at 48% 42%, rgba(237, 247, 255, 0.08), transparent 30%),
+    linear-gradient(90deg, rgba(237, 247, 255, 0.08), transparent 28%, rgba(237, 247, 255, 0.04));
+  animation: stageFade 1.2s ease-in-out infinite;
+}
+
 .prompt {
   text-align: center;
 }
@@ -759,6 +819,42 @@ h1 {
 @keyframes stageFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-14px); }
+}
+
+@keyframes stageCoins {
+  0% { transform: translate3d(0, -12px, 0) rotate(0deg); }
+  100% { transform: translate3d(0, 12px, 0) rotate(4deg); }
+}
+
+@keyframes stageSweep {
+  0% { transform: translateX(-42px); opacity: 0.36; }
+  50% { opacity: 0.72; }
+  100% { transform: translateX(42px); opacity: 0.36; }
+}
+
+@keyframes stageImpact {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.96); }
+}
+
+@keyframes stageHunger {
+  0%, 100% { transform: scale(0.98); filter: saturate(1); }
+  50% { transform: scale(1.04); filter: saturate(1.35); }
+}
+
+@keyframes stageFocus {
+  0%, 100% { transform: scale(0.98); opacity: 0.52; }
+  50% { transform: scale(1.04); opacity: 0.78; }
+}
+
+@keyframes stageSecret {
+  0%, 100% { opacity: 0.42; filter: blur(0); }
+  50% { opacity: 0.66; filter: blur(1px); }
+}
+
+@keyframes stageFade {
+  0%, 100% { opacity: 0.28; }
+  50% { opacity: 0.58; }
 }
 
 @media (prefers-reduced-motion: reduce) {
