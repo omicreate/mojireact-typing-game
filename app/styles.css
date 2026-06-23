@@ -20,6 +20,10 @@
 }
 
 body {
+  --mood-a: rgba(88, 220, 255, 0.18);
+  --mood-b: rgba(158, 255, 179, 0.12);
+  --mood-c: rgba(255, 159, 222, 0.08);
+  --mood-angle: 135deg;
   min-height: 100vh;
   margin: 0;
   display: grid;
@@ -30,6 +34,139 @@ body {
     radial-gradient(circle at 80% 70%, rgba(158, 255, 179, 0.14), transparent 32%),
     linear-gradient(135deg, #080a10 0%, #101726 48%, #080a10 100%);
   overflow: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body::before {
+  z-index: 0;
+  opacity: 0.74;
+  background:
+    radial-gradient(circle at 22% 20%, var(--mood-a), transparent 34%),
+    radial-gradient(circle at 78% 72%, var(--mood-b), transparent 36%),
+    linear-gradient(var(--mood-angle), rgba(255, 255, 255, 0.04), transparent 44%, var(--mood-c));
+  mix-blend-mode: screen;
+  transition: background 180ms ease, opacity 180ms ease;
+}
+
+body::after {
+  z-index: 0;
+  opacity: 0;
+  background: repeating-linear-gradient(115deg, transparent 0 18px, rgba(237, 247, 255, 0.07) 18px 20px);
+  transform: translate3d(0, 0, 0);
+  transition: opacity 180ms ease;
+}
+
+body[data-mood="panic"],
+body[data-mood="brake"] {
+  --mood-a: rgba(255, 111, 137, 0.22);
+  --mood-b: rgba(255, 241, 166, 0.08);
+  --mood-c: rgba(255, 111, 137, 0.12);
+  --mood-angle: 92deg;
+}
+
+body[data-mood="speed"] {
+  --mood-a: rgba(88, 220, 255, 0.26);
+  --mood-b: rgba(203, 251, 255, 0.12);
+  --mood-c: rgba(88, 220, 255, 0.16);
+  --mood-angle: 78deg;
+}
+
+body[data-mood="happy"],
+body[data-mood="shine"],
+body[data-mood="lucky"],
+body[data-mood="burst"] {
+  --mood-a: rgba(255, 241, 166, 0.22);
+  --mood-b: rgba(158, 255, 179, 0.16);
+  --mood-c: rgba(88, 220, 255, 0.1);
+}
+
+body[data-mood="sleep"],
+body[data-mood="float"] {
+  --mood-a: rgba(201, 212, 255, 0.18);
+  --mood-b: rgba(224, 214, 255, 0.12);
+  --mood-c: rgba(201, 212, 255, 0.08);
+  --mood-angle: 160deg;
+}
+
+body[data-mood="faint"],
+body[data-mood="quiet"],
+body[data-mood="secret"] {
+  --mood-a: rgba(189, 167, 255, 0.12);
+  --mood-b: rgba(237, 247, 255, 0.07);
+  --mood-c: rgba(189, 167, 255, 0.06);
+}
+
+body[data-mood="heavy"],
+body[data-mood="dark"] {
+  --mood-a: rgba(79, 76, 120, 0.18);
+  --mood-b: rgba(0, 0, 0, 0.18);
+  --mood-c: rgba(168, 156, 255, 0.08);
+  --mood-angle: 180deg;
+}
+
+body[data-mood="rain"],
+body[data-mood="ice"] {
+  --mood-a: rgba(142, 189, 255, 0.2);
+  --mood-b: rgba(167, 236, 255, 0.14);
+  --mood-c: rgba(142, 189, 255, 0.09);
+  --mood-angle: 120deg;
+}
+
+body[data-mood="fire"],
+body[data-mood="hungry"] {
+  --mood-a: rgba(255, 138, 77, 0.2);
+  --mood-b: rgba(255, 209, 155, 0.12);
+  --mood-c: rgba(255, 111, 137, 0.1);
+  --mood-angle: 28deg;
+}
+
+body[data-mood="money"],
+body[data-mood="calm"],
+body[data-mood="clean"],
+body[data-mood="focus"] {
+  --mood-a: rgba(158, 255, 179, 0.18);
+  --mood-b: rgba(88, 220, 255, 0.13);
+  --mood-c: rgba(223, 252, 255, 0.07);
+}
+
+body[data-mood="glitch"],
+body[data-mood="messy"],
+body[data-mood="pop"],
+body[data-mood="loud"] {
+  --mood-a: rgba(255, 159, 222, 0.18);
+  --mood-b: rgba(88, 220, 255, 0.17);
+  --mood-c: rgba(255, 111, 137, 0.11);
+  --mood-angle: 105deg;
+}
+
+body[data-mood="speed"]::after,
+body[data-mood="rain"]::after,
+body[data-mood="glitch"]::after,
+body[data-mood="messy"]::after,
+body[data-mood="burst"]::after,
+body[data-mood="fire"]::after {
+  opacity: 0.34;
+  animation: moodFlow 620ms linear infinite;
+}
+
+body[data-mood="rain"]::after {
+  opacity: 0.26;
+  background: repeating-linear-gradient(104deg, transparent 0 18px, rgba(142, 189, 255, 0.16) 18px 20px);
+  animation-duration: 900ms;
+}
+
+body[data-mood="glitch"]::after,
+body[data-mood="messy"]::after {
+  opacity: 0.24;
+  background: repeating-linear-gradient(90deg, rgba(255, 159, 222, 0.08) 0 2px, transparent 2px 22px);
+  animation: moodJitter 180ms steps(2, end) infinite;
 }
 
 button,
@@ -54,6 +191,7 @@ button:active {
 
 .game {
   position: relative;
+  z-index: 1;
   width: min(1080px, calc(100vw - 48px));
   height: min(700px, calc(100vh - 48px));
   margin: 0 auto;
@@ -489,12 +627,26 @@ h1 {
   50% { transform: translateY(-8px); }
 }
 
+@keyframes moodFlow {
+  0% { transform: translate3d(-24px, -18px, 0); }
+  100% { transform: translate3d(24px, 18px, 0); }
+}
+
+@keyframes moodJitter {
+  0% { transform: translate3d(-3px, 0, 0); }
+  100% { transform: translate3d(3px, 0, 0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mood-panic .word,
   .mood-secret .word,
   .mood-fire .word,
   .mood-float .word {
     animation: none;
+  }
+
+  body::after {
+    animation: none !important;
   }
 
   .flash {

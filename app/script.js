@@ -54,7 +54,51 @@ const rawPrompts = [
   { word: "心が無", reading: "こころがむ", mood: "faint" },
   { word: "大混乱", reading: "だいこんらん", mood: "glitch" },
   { word: "深呼吸", reading: "しんこきゅう", mood: "calm" },
-  { word: "腹ペコ", reading: "はらぺこ", mood: "hungry" }
+  { word: "腹ペコ", reading: "はらぺこ", mood: "hungry" },
+  { word: "寝癖爆発", reading: "ねぐせばくはつ", mood: "panic" },
+  { word: "朝から勝ち", reading: "あさからかち", mood: "happy" },
+  { word: "予定パンパン", reading: "よていぱんぱん", mood: "heavy" },
+  { word: "財布軽い", reading: "さいふかるい", mood: "faint" },
+  { word: "謎の余裕", reading: "なぞのよゆう", mood: "calm" },
+  { word: "秒で理解", reading: "びょうでりかい", mood: "speed" },
+  { word: "目がしょぼい", reading: "めがしょぼい", mood: "sleep" },
+  { word: "通知ゼロ", reading: "つうちぜろ", mood: "quiet" },
+  { word: "急に真顔", reading: "きゅうにまがお", mood: "ice" },
+  { word: "頭真っ白", reading: "あたままっしろ", mood: "faint" },
+  { word: "ひらめいた", reading: "ひらめいた", mood: "shine" },
+  { word: "神引き", reading: "かみびき", mood: "lucky" },
+  { word: "沼った", reading: "ぬまった", mood: "heavy" },
+  { word: "優勝した", reading: "ゆうしょうした", mood: "happy" },
+  { word: "現実逃避", reading: "げんじつとうひ", mood: "float" },
+  { word: "締切前夜", reading: "しめきりぜんや", mood: "panic" },
+  { word: "脳内会議", reading: "のうないかいぎ", mood: "messy" },
+  { word: "やる気満タン", reading: "やるきまんたん", mood: "burst" },
+  { word: "水分補給", reading: "すいぶんほきゅう", mood: "clean" },
+  { word: "空腹注意", reading: "くうふくちゅうい", mood: "hungry" },
+  { word: "秒で既読", reading: "びょうできどく", mood: "speed" },
+  { word: "全力疾走", reading: "ぜんりょくしっそう", mood: "speed" },
+  { word: "急に眠い", reading: "きゅうにねむい", mood: "sleep" },
+  { word: "雨上がり", reading: "あめあがり", mood: "rain" },
+  { word: "風吹いた", reading: "かぜふいた", mood: "float" },
+  { word: "音量注意", reading: "おんりょうちゅうい", mood: "loud" },
+  { word: "静かに拍手", reading: "しずかにはくしゅ", mood: "quiet" },
+  { word: "やさしい世界", reading: "やさしいせかい", mood: "calm" },
+  { word: "火力高め", reading: "かりょくたかめ", mood: "fire" },
+  { word: "氷の視線", reading: "こおりのしせん", mood: "ice" },
+  { word: "闇落ち", reading: "やみおち", mood: "dark" },
+  { word: "バグった", reading: "ばぐった", mood: "glitch" },
+  { word: "きれい好き", reading: "きれいずき", mood: "clean" },
+  { word: "突然の光", reading: "とつぜんのひかり", mood: "shine" },
+  { word: "重たい空気", reading: "おもたいくうき", mood: "heavy" },
+  { word: "軽いノリ", reading: "かるいのり", mood: "pop" },
+  { word: "秘密兵器", reading: "ひみつへいき", mood: "secret" },
+  { word: "財布復活", reading: "さいふふっかつ", mood: "money" },
+  { word: "歓喜の舞", reading: "かんきのまい", mood: "happy" },
+  { word: "深夜テンション", reading: "しんやてんしょん", mood: "pop" },
+  { word: "無音の圧", reading: "むおんのあつ", mood: "quiet" },
+  { word: "焦げそう", reading: "こげそう", mood: "fire" },
+  { word: "スローモーション", reading: "すろーもーしょん", mood: "float" },
+  { word: "電池復活", reading: "でんちふっかつ", mood: "shine" }
 ];
 
 const prompts = rawPrompts.map((prompt) => ({
@@ -164,6 +208,7 @@ function setMood(mood) {
     .join(" ");
   els.game.classList.add(`mood-${moodName}`);
   els.game.dataset.mood = moodName;
+  document.body.dataset.mood = moodName;
 }
 
 function renderRomaji(input) {
