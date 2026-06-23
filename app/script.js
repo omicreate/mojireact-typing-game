@@ -38,7 +38,23 @@ const rawPrompts = [
   { word: "ラッキー", reading: "らっきー", mood: "lucky" },
   { word: "集中モード", reading: "しゅうちゅうもーど", mood: "focus" },
   { word: "限界突破", reading: "げんかいとっぱ", mood: "burst" },
-  { word: "黒歴史", reading: "くろれきし", mood: "dark" }
+  { word: "黒歴史", reading: "くろれきし", mood: "dark" },
+  { word: "まぶしい", reading: "まぶしい", mood: "shine" },
+  { word: "ひんやり", reading: "ひんやり", mood: "ice" },
+  { word: "バタバタ", reading: "ばたばた", mood: "messy" },
+  { word: "しょんぼり", reading: "しょんぼり", mood: "heavy" },
+  { word: "静かな夜", reading: "しずかなよる", mood: "quiet" },
+  { word: "ドキドキ", reading: "どきどき", mood: "panic" },
+  { word: "きらきら", reading: "きらきら", mood: "shine" },
+  { word: "ぐるぐる", reading: "ぐるぐる", mood: "messy" },
+  { word: "余裕", reading: "よゆう", mood: "calm" },
+  { word: "激アツ", reading: "げきあつ", mood: "fire" },
+  { word: "そっと閉じる", reading: "そっととじる", mood: "secret" },
+  { word: "光の速さ", reading: "ひかりのはやさ", mood: "speed" },
+  { word: "心が無", reading: "こころがむ", mood: "faint" },
+  { word: "大混乱", reading: "だいこんらん", mood: "glitch" },
+  { word: "深呼吸", reading: "しんこきゅう", mood: "calm" },
+  { word: "腹ペコ", reading: "はらぺこ", mood: "hungry" }
 ];
 
 const prompts = rawPrompts.map((prompt) => ({
