@@ -46,7 +46,7 @@ body::after {
 
 body::before {
   z-index: 0;
-  opacity: 0.74;
+  opacity: 0.92;
   background:
     radial-gradient(circle at 22% 20%, var(--mood-a), transparent 34%),
     radial-gradient(circle at 78% 72%, var(--mood-b), transparent 36%),
@@ -152,19 +152,19 @@ body[data-mood="glitch"]::after,
 body[data-mood="messy"]::after,
 body[data-mood="burst"]::after,
 body[data-mood="fire"]::after {
-  opacity: 0.34;
+  opacity: 0.48;
   animation: moodFlow 620ms linear infinite;
 }
 
 body[data-mood="rain"]::after {
-  opacity: 0.26;
+  opacity: 0.42;
   background: repeating-linear-gradient(104deg, transparent 0 18px, rgba(142, 189, 255, 0.16) 18px 20px);
   animation-duration: 900ms;
 }
 
 body[data-mood="glitch"]::after,
 body[data-mood="messy"]::after {
-  opacity: 0.24;
+  opacity: 0.4;
   background: repeating-linear-gradient(90deg, rgba(255, 159, 222, 0.08) 0 2px, transparent 2px 22px);
   animation: moodJitter 180ms steps(2, end) infinite;
 }
@@ -398,9 +398,103 @@ h1 {
 }
 
 .play {
+  overflow: hidden;
   grid-template-rows: auto auto auto auto auto;
   place-items: stretch;
   gap: 16px;
+}
+
+.play > * {
+  position: relative;
+  z-index: 1;
+}
+
+.play::before,
+.play::after {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  z-index: 0;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.play::before {
+  opacity: 0.48;
+  background:
+    radial-gradient(circle at 50% 25%, var(--mood-a), transparent 36%),
+    radial-gradient(circle at 50% 72%, var(--mood-b), transparent 38%);
+  filter: blur(4px);
+}
+
+.play::after {
+  opacity: 0;
+  background: linear-gradient(115deg, transparent 0 38%, rgba(237, 247, 255, 0.18) 42%, transparent 48%);
+}
+
+.mood-snap .play::before {
+  animation: stageSnap 360ms ease-out;
+}
+
+.mood-speed .play::after,
+.mood-brake .play::after {
+  opacity: 0.74;
+  background: repeating-linear-gradient(100deg, transparent 0 18px, rgba(88, 220, 255, 0.22) 18px 22px, transparent 22px 42px);
+  animation: stageRush 420ms linear infinite;
+}
+
+.mood-brake .play::after {
+  background: repeating-linear-gradient(80deg, transparent 0 18px, rgba(255, 111, 137, 0.28) 18px 24px, transparent 24px 44px);
+  animation-direction: reverse;
+}
+
+.mood-panic .play::after,
+.mood-glitch .play::after,
+.mood-messy .play::after {
+  opacity: 0.58;
+  background:
+    linear-gradient(90deg, rgba(255, 111, 137, 0.18), transparent 22%, rgba(88, 220, 255, 0.14), transparent 48%),
+    repeating-linear-gradient(0deg, transparent 0 13px, rgba(237, 247, 255, 0.09) 13px 15px);
+  animation: stageJitter 160ms steps(2, end) infinite;
+}
+
+.mood-fire .play::after,
+.mood-burst .play::after,
+.mood-shine .play::after,
+.mood-happy .play::after,
+.mood-lucky .play::after {
+  opacity: 0.68;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 241, 166, 0.26), transparent 34%);
+  animation: stagePulse 760ms ease-in-out infinite;
+}
+
+.mood-rain .play::after,
+.mood-ice .play::after {
+  opacity: 0.58;
+  background: repeating-linear-gradient(106deg, transparent 0 22px, rgba(142, 189, 255, 0.22) 22px 25px);
+  animation: stageRain 900ms linear infinite;
+}
+
+.mood-float .play::after,
+.mood-sleep .play::after {
+  opacity: 0.42;
+  background: radial-gradient(ellipse at 50% 40%, rgba(224, 214, 255, 0.18), transparent 44%);
+  animation: stageFloat 1.7s ease-in-out infinite;
+}
+
+.mood-faint .play::after,
+.mood-secret .play::after,
+.mood-quiet .play::after,
+.mood-dark .play::after {
+  opacity: 0.38;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.28), transparent 44%);
+}
+
+.mood-loud .play::after,
+.mood-pop .play::after {
+  opacity: 0.6;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 159, 222, 0.2), transparent 28%);
+  animation: stagePulse 520ms ease-in-out infinite;
 }
 
 .prompt {
@@ -637,12 +731,47 @@ h1 {
   100% { transform: translate3d(3px, 0, 0); }
 }
 
+@keyframes stageSnap {
+  0% { opacity: 0.95; transform: scale(0.98); }
+  100% { opacity: 0.48; transform: scale(1); }
+}
+
+@keyframes stageRush {
+  0% { transform: translate3d(-34px, 0, 0); }
+  100% { transform: translate3d(34px, 0, 0); }
+}
+
+@keyframes stageJitter {
+  0% { transform: translate3d(-4px, 2px, 0); filter: hue-rotate(0deg); }
+  100% { transform: translate3d(4px, -2px, 0); filter: hue-rotate(24deg); }
+}
+
+@keyframes stagePulse {
+  0%, 100% { transform: scale(0.98); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.82; }
+}
+
+@keyframes stageRain {
+  0% { transform: translate3d(-18px, -24px, 0); }
+  100% { transform: translate3d(18px, 24px, 0); }
+}
+
+@keyframes stageFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mood-panic .word,
   .mood-secret .word,
   .mood-fire .word,
   .mood-float .word {
     animation: none;
+  }
+
+  .play::before,
+  .play::after {
+    animation: none !important;
   }
 
   body::after {
