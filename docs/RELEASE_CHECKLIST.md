@@ -25,6 +25,8 @@
 
 - Pagesの公開元はリポジトリルートを想定する。
 - ルートの `index.html` から `app/` に遷移する。
+- 公開URLは `https://omicreate.github.io/mojireact-typing-game/`。
+- GitHubリポジトリは `https://github.com/omicreate/mojireact-typing-game`。
 - 外部API、外部CDN、ビルド工程は不要。
 - `.nojekyll` を置き、GitHub Pages側の余計な処理を避ける。
 - OGP画像は `app/assets/ogp.svg` を参照する。

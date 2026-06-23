@@ -21,6 +21,20 @@
 
 ## 遊び方
 
+公開版:
+
+```text
+https://omicreate.github.io/mojireact-typing-game/
+```
+
+GitHub:
+
+```text
+https://github.com/omicreate/mojireact-typing-game
+```
+
+ローカル版:
+
 ```bash
 cd /Users/omi/Documents/個人開発　No.1　タイピングゲーム
 python3 -m http.server 8010
@@ -50,10 +64,10 @@ http://localhost:8010/
 
 GitHub Pagesではリポジトリルートを公開対象にします。ルートの `index.html` から `app/` に遷移します。
 
-想定URL:
+公開URL:
 
 ```text
-https://<github-user>.github.io/<repository-name>/
+https://omicreate.github.io/mojireact-typing-game/
 ```
 
 ## ドキュメント
