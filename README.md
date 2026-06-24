@@ -65,9 +65,12 @@ https://omicreate.github.io/mojireact-typing-game/
 
 - [ローマ字入力エンジン](docs/ROMAJI_ENGINE.md)
 - [公開前チェックリスト](docs/RELEASE_CHECKLIST.md)
+- [セキュリティ方針](SECURITY.md)
 
 ## 確認
 
+- `npm run test`
+- `npm run check:public-info`
 - `node --check app/script.js`
 - `node --check app/romaji-engine.js`
 - 公開URLで開始、正解、ミス、終了、再挑戦を確認する。

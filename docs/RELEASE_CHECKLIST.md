@@ -4,6 +4,7 @@
 
 - `node --check app/script.js` が通る。
 - `node --check app/romaji-engine.js` が通る。
+- `npm run check:public-info` が通る。
 - 公開URLでタイトルから `app/` に移動できる。
 - 公開URLでゲームが開く。
 - 開始ボタンでゲームが始まる。
