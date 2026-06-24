@@ -4,9 +4,8 @@
 
 - `node --check app/script.js` が通る。
 - `node --check app/romaji-engine.js` が通る。
-- `python3 -m http.server 8010 --bind 127.0.0.1` で起動できる。
-- `http://localhost:8010/` でタイトルから `app/` に移動できる。
-- `http://localhost:8010/app/` でゲームが開く。
+- 公開URLでタイトルから `app/` に移動できる。
+- 公開URLでゲームが開く。
 - 開始ボタンでゲームが始まる。
 - タイトルが `モジリアクト` になっている。
 - 最初の一言が文字リアクションのコンセプトを伝えている。

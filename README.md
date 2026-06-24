@@ -33,19 +33,6 @@ GitHub:
 https://github.com/omicreate/mojireact-typing-game
 ```
 
-ローカル版:
-
-```bash
-cd /Users/omi/Documents/個人開発　No.1　タイピングゲーム
-python3 -m http.server 8010
-```
-
-ブラウザで開きます。
-
-```text
-http://localhost:8010/
-```
-
 ## 方針
 
 - ジャンルは「日常ワード」ひとつに絞る。
@@ -83,4 +70,4 @@ https://omicreate.github.io/mojireact-typing-game/
 
 - `node --check app/script.js`
 - `node --check app/romaji-engine.js`
-- ブラウザで開始、正解、ミス、終了、再挑戦を確認する。
+- 公開URLで開始、正解、ミス、終了、再挑戦を確認する。
